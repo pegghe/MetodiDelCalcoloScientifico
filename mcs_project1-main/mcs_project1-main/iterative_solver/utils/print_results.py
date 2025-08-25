@@ -1,8 +1,17 @@
-def print_results(x_approssimato, iterazioni, errore_relativo, tempo_calcolo, convergenza, maxIter=20000):
+def print_results(
+    x_approssimato,
+    iterazioni: int,
+    errore_relativo: float,
+    tempo_calcolo: float,
+    convergenza: bool,
+    maxIter: int = 20000,
+    preview: int = 5
+):
     """
     Stampa in modo ordinato i risultati di un metodo iterativo.
 
-    Parameters:
+    Parameters
+    ----------
     x_approssimato : ndarray
         La soluzione calcolata.
     iterazioni : int
@@ -13,20 +22,24 @@ def print_results(x_approssimato, iterazioni, errore_relativo, tempo_calcolo, co
         Tempo impiegato in secondi.
     convergenza : bool
         True se metodo convergente, False altrimenti.
-    maxIter : int
+    maxIter : int, default=20000
         Numero massimo di iterazioni (usato per il messaggio in caso di non convergenza).
+    preview : int, default=5
+        Numero di elementi della soluzione da stampare come anteprima.
     """
 
-    print("=" * 60)
-    if convergenza:
-        print(f"Metodo convergente")
-        print(f"Numero di iterazioni..... {iterazioni}")
-        print(f"Errore relativo.......... {errore_relativo:.2e}")
-        print(f"Tempo di calcolo......... {tempo_calcolo:.4f} secondi")
-        print(f"Soluzione approssimata... {x_approssimato[:5]} ...")
-    else:
-        print(f"ATTENZIONE: Metodo NON convergente.")
-        print(f"Superato il massimo numero di iterazioni (maxIter).")
+    separatore = "=" * 60
+    print(separatore)
 
-    print("=" * 60)
-    print()  # Riga vuota per separare visivamente
+    if convergenza:
+        print("✔ Metodo convergente")
+        print(f"- Iterazioni eseguite:   {iterazioni}")
+        print(f"- Errore relativo:       {errore_relativo:.2e}")
+        print(f"- Tempo di calcolo:      {tempo_calcolo:.4f} secondi")
+        print(f"- Norma soluzione:       {float((x_approssimato**2).sum())**0.5:.2e}")
+        print(f"- Soluzione (prime {preview}): {x_approssimato[:preview]} ...")
+    else:
+        print("✘ ATTENZIONE: Metodo NON convergente")
+        print(f"- Superato il massimo numero di iterazioni (maxIter = {maxIter})")
+
+    print(separatore, "\n")
