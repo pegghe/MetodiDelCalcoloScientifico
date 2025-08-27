@@ -31,10 +31,10 @@ def _is_positive_definite(A, atol: float = 0.0) -> bool:
 def conjugate_gradient(A, b, x_exact, tol, maxIter=20000):
     """
     Conjugate Gradient per matrici SPD.
-    - Se A NON è simmetrica o NON è PD -> raise (come nel progetto).
+    - Se A NON è simmetrica o NON è PD -> raise.
     - Se a runtime capita d^T A d <= 0 -> WARNING, stop pulito, convergenza=False.
     """
-    # --- CONTROLLI SPD (come nel progetto: fanno raise) ---
+    # --- CONTROLLI SPD  ---
     if not _is_symmetric(A):
         raise ValueError("Matrix A is not symmetric, Conjugate Gradient failed.")
     if not _is_positive_definite(A):
@@ -62,18 +62,7 @@ def conjugate_gradient(A, b, x_exact, tol, maxIter=20000):
             break
 
         q = A @ d
-        denom = float(d @ q)
-        if denom <= 0 or np.isclose(denom, 0.0):
-            # Prima facevamo raise. Ora: warning e uscita pulita.
-            warnings.warn(
-                "Breakdown in CG: detected d^T A d <= 0 (A may not be SPD). "
-                "Stopping and returning current iterate.",
-                RuntimeWarning
-            )
-            convergenza = False
-            break
-
-        alpha = delta_new / denom
+        alpha = delta_new / np.dot(d, q)
         x = x + alpha * d
         r = r - alpha * q
         delta_old = delta_new

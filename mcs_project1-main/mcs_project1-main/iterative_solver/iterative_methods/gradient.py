@@ -50,7 +50,7 @@ def gradient(A, b, x_exact, tol, max_iter=20000):
       - A deve essere simmetrica
       - A deve essere definita positiva
     """
-    # Se è sparse, conviene portarla almeno in CSR/CSC per prodotti efficienti
+    # Se è sparse
     if sp.issparse(A) and not (sp.isspmatrix_csr(A) or sp.isspmatrix_csc(A)):
         A = A.tocsr()
 

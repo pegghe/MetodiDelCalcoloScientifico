@@ -39,7 +39,7 @@ def jacobi(
             raise ValueError(f"Elementi nulli sulla diagonale di A ai/alle riga/e {idx0}. "
                              "Jacobi richiede D invertibile.")
 
-        # (Opzionale) check simmetria
+        # check simmetria
         if check_symmetry:
             # Usa differenza sparsa senza densificare
             diff = (A - A.T).tocoo()
@@ -49,8 +49,7 @@ def jacobi(
             if max_abs > symmetry_tol:
                 warnings.warn(f"A non risulta simmetrica: ||A - A.T||_max ≈ {max_abs:.2e} > {symmetry_tol:.2e}")
 
-        # Dominanza diagonale (condizione sufficiente alla convergenza di Jacobi)
-        # |a_ii| >= sum_{j!=i} |a_ij| per ogni i (debole); "stretta" se > per almeno una riga.
+        # Dominanza diagonale
         absA = abs(A).tocsr()
         row_sums = np.array(absA.sum(axis=1)).ravel()
         offdiag = row_sums - np.abs(D)
@@ -68,7 +67,7 @@ def jacobi(
             # Caso limite: solo uguaglianze; potrebbe rallentare la convergenza.
             warnings.warn("A è solo debolmente dominante (nessuna riga strettamente dominante).")
 
-    # --- Implementazione Jacobi invariata (con piccoli accorgimenti di robustezza) ---
+    # --- Implementazione Jacobi invariata
     x = np.zeros_like(b, dtype=float)
     D = A.diagonal().astype(float)
     D_inv = 1.0 / D

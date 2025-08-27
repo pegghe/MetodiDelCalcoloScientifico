@@ -1,17 +1,17 @@
 Metodo,Tolleranza,Iterazioni,Errore Relativo,Tempo di Calcolo (s),Convergenza
-Jacobi,1e-04,1314,3.54e-03,0.0381,True
-Jacobi,1e-06,2433,3.54e-05,0.0672,True
-Jacobi,1e-08,3552,3.54e-07,0.0939,True
-Jacobi,1e-10,4671,3.54e-09,0.1239,True
-Gauss-Seidel,1e-04,659,3.51e-03,3.3931,True
-Gauss-Seidel,1e-06,1218,3.53e-05,6.2223,True
-Gauss-Seidel,1e-08,1778,3.52e-07,8.6541,True
-Gauss-Seidel,1e-10,2338,3.51e-09,11.9517,True
-Gradiente,1e-04,890,2.70e-03,0.0225,True
-Gradiente,1e-06,1612,2.71e-05,0.0475,True
-Gradiente,1e-08,2336,2.70e-07,0.0668,True
-Gradiente,1e-10,3058,2.71e-09,0.0871,True
-Gradiente coniugato,1e-04,38,4.08e-05,0.0010,True
-Gradiente coniugato,1e-06,43,1.49e-06,0.0010,False
-Gradiente coniugato,1e-08,43,1.49e-06,0.0011,False
-Gradiente coniugato,1e-10,43,1.49e-06,0.0010,False
+Jacobi,1e-04,1314,3.54e-03,0.1607,True
+Jacobi,1e-06,2433,3.54e-05,0.2299,True
+Jacobi,1e-08,3552,3.54e-07,0.3236,True
+Jacobi,1e-10,4671,3.54e-09,0.2873,True
+Gauss-Seidel,1e-04,659,3.51e-03,8.1703,True
+Gauss-Seidel,1e-06,1218,3.53e-05,23.1884,True
+Gauss-Seidel,1e-08,1778,3.52e-07,19.1330,True
+Gauss-Seidel,1e-10,2338,3.51e-09,36.4854,True
+Gradiente,1e-04,890,2.70e-03,0.0348,True
+Gradiente,1e-06,1612,2.71e-05,0.0553,True
+Gradiente,1e-08,2336,2.70e-07,0.0790,True
+Gradiente,1e-10,3058,2.71e-09,0.0955,True
+Gradiente coniugato,1e-04,38,4.08e-05,0.0011,True
+Gradiente coniugato,1e-06,45,3.73e-07,0.0009,True
+Gradiente coniugato,1e-08,53,2.83e-09,0.0009,True
+Gradiente coniugato,1e-10,59,2.19e-11,0.0009,True
